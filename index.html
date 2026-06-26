@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Johanna Landwehr — Senior Partnership & Key Account Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #15180f;
+      --bg-card: #1a1e12;
+      --bg-deep: #11140c;
+      --text: #ece7dc;
+      --text-muted: rgba(236,231,220,.7);
+      --text-dim: rgba(236,231,220,.5);
+      --text-faint: rgba(236,231,220,.4);
+      --border: rgba(236,231,220,.12);
+      --green: #9cb46f;
+      --green-dark: #3A562D;
+      --green-faint: rgba(156,180,111,.5);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      min-height: 100vh;
+    }
+
+    a { text-decoration: none; }
+
+    @keyframes lpFade { from { opacity: 0 } to { opacity: 1 } }
+    @keyframes lpRise { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: translateY(0) } }
+
+    /* ── Nav ── */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 26px 64px;
+      border-bottom: 1px solid var(--border);
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      font: 500 16px/1 'Cormorant Garamond', serif;
+      letter-spacing: .06em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      font-size: 13px;
+      letter-spacing: .04em;
+      color: rgba(236,231,220,.62);
+    }
+    .nav-links a { color: inherit; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      border: 1px solid rgba(236,231,220,.28);
+      color: var(--text);
+      font: 500 12px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .08em;
+      padding: 7px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+    .lang-btn:hover { border-color: var(--green); color: var(--green); }
+    .lang-btn .dim { opacity: .55; }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 78px 56px 62px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .hero-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 0 auto;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(236,231,220,.18), 0 0 0 7px rgba(58,86,45,.35);
+      background: rgba(58,86,45,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font: 400 56px 'Cormorant Garamond', serif;
+      color: var(--green);
+    }
+    .hero-eyebrow {
+      font: 500 12px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin: 36px 0 22px;
+    }
+    .hero h1 {
+      font: 400 70px/1.05 'Cormorant Garamond', serif;
+      letter-spacing: .01em;
+      margin: 0 auto 26px;
+      max-width: 19ch;
+    }
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 56ch;
+      margin: 0 auto 38px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--green-dark);
+      color: #f3efe6;
+      padding: 15px 30px;
+      border-radius: 2px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .02em;
+      transition: background .2s;
+    }
+    .btn-primary:hover { background: #4a6d3b; }
+    .btn-outline {
+      border: 1px solid rgba(236,231,220,.3);
+      padding: 15px 30px;
+      border-radius: 2px;
+      font-size: 14px;
+      letter-spacing: .02em;
+      color: var(--text);
+      transition: border-color .2s;
+    }
+    .btn-outline:hover { border-color: rgba(236,231,220,.6); }
+
+    /* ── Stats ── */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 72px;
+      padding: 38px 56px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      max-width: 1180px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font: 400 46px/1 'Cormorant Garamond', serif;
+      color: var(--green);
+    }
+    .stat-label {
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 6px;
+    }
+
+    /* ── About ── */
+    .about {
+      padding: 74px 64px 64px;
+      max-width: 940px;
+      margin: 0 auto;
+    }
+    .section-eyebrow {
+      font: 500 12px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 30px;
+    }
+    .about-lead {
+      font: 400 32px/1.4 'Cormorant Garamond', serif;
+      color: var(--text);
+      margin: 0 0 30px;
+      max-width: 24ch;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+    }
+    .about-grid p {
+      font-size: 15.5px;
+      line-height: 1.72;
+      color: rgba(236,231,220,.72);
+    }
+
+    /* ── Value ── */
+    .value {
+      padding: 30px 64px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .value-eyebrow {
+      text-align: center;
+      margin-bottom: 14px;
+      font: 500 12px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .value-lead {
+      text-align: center;
+      font: 400 30px/1.32 'Cormorant Garamond', serif;
+      margin: 0 auto 46px;
+      max-width: 30ch;
+      color: var(--text);
+    }
+    .factors { display: flex; flex-direction: column; gap: 22px; }
+    .factor {
+      background: var(--bg-card);
+      border: 1px solid rgba(236,231,220,.13);
+      border-radius: 5px;
+      padding: 34px 38px;
+    }
+    .factor-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    .factor-num {
+      font: 400 46px/.85 'Cormorant Garamond', serif;
+      color: var(--green-faint);
+      flex: none;
+    }
+    .factor h3 {
+      font: 500 26px/1.15 'Cormorant Garamond', serif;
+      margin: 0 0 14px;
+    }
+    .factor-tag {
+      display: inline-block;
+      background: rgba(58,86,45,.5);
+      border: 1px solid rgba(156,180,111,.35);
+      color: #cdd9b3;
+      font: 500 11px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .05em;
+      padding: 6px 12px;
+      border-radius: 3px;
+    }
+    .factor-why {
+      font-size: 15.5px;
+      line-height: 1.68;
+      color: rgba(236,231,220,.74);
+      margin: 0 0 22px;
+    }
+    .factor-impact {
+      background: var(--bg-deep);
+      border-left: 2px solid var(--green);
+      border-radius: 0 3px 3px 0;
+      padding: 18px 22px;
+    }
+    .impact-label {
+      font: 500 11px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 9px;
+    }
+    .impact-text {
+      font-size: 14.5px;
+      line-height: 1.62;
+      color: rgba(236,231,220,.82);
+    }
+
+    /* ── Experience ── */
+    .experience {
+      padding: 54px 64px 44px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .exp-heading {
+      font: 500 12px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .job {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 34px;
+      padding-bottom: 34px;
+      margin-bottom: 34px;
+      border-bottom: 1px solid var(--border);
+    }
+    .job-dates {
+      font: 400 18px/1.2 'Cormorant Garamond', serif;
+      color: var(--green);
+    }
+    .job-company {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+    .job h3 {
+      font: 500 25px/1.2 'Cormorant Garamond', serif;
+      margin: 0 0 10px;
+    }
+    .job-summary {
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(236,231,220,.68);
+      margin: 0 0 18px;
+      max-width: 60ch;
+    }
+    .read-more-btn {
+      background: transparent;
+      border: 1px solid rgba(156,180,111,.5);
+      color: var(--green);
+      font: 500 12px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .read-more-btn:hover { background: rgba(156,180,111,.12); }
+
+    /* ── Skills ── */
+    .skills-section {
+      padding: 34px 56px 64px;
+      text-align: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .skills-heading {
+      font: 500 12px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 26px;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .skill-pill {
+      border: 1px solid rgba(236,231,220,.22);
+      border-radius: 999px;
+      padding: 9px 17px;
+      font-size: 13px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 60px 56px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-deep);
+    }
+    .footer-title {
+      font: 400 36px/1.2 'Cormorant Garamond', serif;
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 14px;
+      color: rgba(236,231,220,.65);
+    }
+    .footer-links a { color: inherit; transition: color .2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(8,9,5,.72);
+      backdrop-filter: blur(3px);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 48px 24px;
+      overflow-y: auto;
+      z-index: 50;
+      animation: lpFade .2s ease;
+    }
+    .modal-overlay.hidden { display: none; }
+    .modal {
+      background: var(--bg-card);
+      border: 1px solid rgba(236,231,220,.14);
+      border-radius: 4px;
+      max-width: 720px;
+      width: 100%;
+      margin: auto;
+      box-shadow: 0 30px 80px rgba(0,0,0,.5);
+      animation: lpRise .28s cubic-bezier(.2,.7,.3,1);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 34px 40px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .modal-meta {
+      font: 500 12px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .14em;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    .modal-title {
+      font: 500 30px/1.2 'Cormorant Garamond', serif;
+    }
+    .modal-close {
+      flex: none;
+      background: transparent;
+      border: 1px solid rgba(236,231,220,.25);
+      color: var(--text);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      line-height: 1;
+      transition: background .2s;
+    }
+    .modal-close:hover { background: rgba(236,231,220,.1); }
+    .modal-body { padding: 30px 40px 38px; }
+    .bullet {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(236,231,220,.08);
+    }
+    .bullet-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green-dark);
+      margin-top: 8px;
+      box-shadow: 0 0 0 4px rgba(58,86,45,.25);
+      flex: none;
+    }
+    .bullet-head {
+      font-weight: 600;
+      font-size: 14.5px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .bullet-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(236,231,220,.66);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav { padding: 20px 24px; flex-wrap: wrap; gap: 16px; }
+      .nav-links { gap: 16px; flex-wrap: wrap; }
+      .hero { padding: 56px 24px 40px; }
+      .hero h1 { font-size: 48px; }
+      .stats { gap: 40px; padding: 30px 24px; }
+      .about { padding: 48px 24px 40px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .value { padding: 20px 24px; }
+      .factor { padding: 24px 20px; }
+      .experience { padding: 40px 24px 30px; }
+      .job { grid-template-columns: 1fr; gap: 8px; }
+      .skills-section { padding: 24px 24px 48px; }
+      .footer { padding: 48px 24px; }
+      .modal-header { padding: 24px 24px 18px; }
+      .modal-body { padding: 20px 24px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- nav -->
+  <nav>
+    <div class="nav">
+      <div class="nav-logo">JOHANNA LANDWEHR</div>
+      <div class="nav-links">
+        <a href="#about" data-en="About" data-de="Über mich">About</a>
+        <a href="#value" data-en="Strengths" data-de="Stärken">Strengths</a>
+        <a href="#work" data-en="Work" data-de="Werdegang">Work</a>
+        <a href="#skills" data-en="Skills" data-de="Kompetenzen">Skills</a>
+        <a href="#contact" data-en="Contact" data-de="Kontakt">Contact</a>
+        <button class="lang-btn" onclick="toggleLang()">
+          <span class="dim lang-current">EN</span><span>/</span><span class="lang-other" style="font-weight:600">DE</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <div class="hero">
+    <div class="hero-avatar">JL</div>
+    <div class="hero-eyebrow" data-en="Senior Partnership &amp; Key Account Manager · MBA" data-de="Senior Partnership &amp; Key Account Manager · MBA">
+      Senior Partnership &amp; Key Account Manager · MBA
+    </div>
+    <h1 data-en="I build partnerships that scale portfolios — and patient care."
+        data-de="Ich baue Partnerschaften, die Portfolios skalieren – und die Patientenversorgung.">
+      I build partnerships that scale portfolios — and patient care.
+    </h1>
+    <p class="hero-sub"
+       data-en="Six years building strategic partnerships across healthcare — owning €100M+ in key accounts, negotiating at decision-maker level across 15+ countries, and orchestrating the cross-functional teams that deliver."
+       data-de="Sechs Jahre Aufbau strategischer Partnerschaften im Gesundheitswesen – mit über €100M Account-Verantwortung, Verhandlungen auf Entscheiderebene in 15+ Ländern und der Orchestrierung cross-funktionaler Teams.">
+      Six years building strategic partnerships across healthcare — owning €100M+ in key accounts, negotiating at decision-maker level across 15+ countries, and orchestrating the cross-functional teams that deliver.
+    </p>
+    <div class="hero-ctas">
+      <a href="mailto:johannalandwehr@outlook.com" class="btn-primary" data-en="Email me" data-de="Schreiben Sie mir">Email me</a>
+      <a href="https://www.linkedin.com/in/johanna-landwehr" class="btn-outline" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="CV_JL.pdf" class="btn-outline" target="_blank" data-en="Download CV ↓" data-de="Lebenslauf ↓">Download CV ↓</a>
+    </div>
+  </div>
+
+  <!-- stats -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">€100M+</div>
+      <div class="stat-label" data-en="Key accounts led" data-de="Key Accounts geführt">Key accounts led</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">6 yrs</div>
+      <div class="stat-label" data-en="Years in healthcare" data-de="Jahre im Healthcare">Years in healthcare</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15+</div>
+      <div class="stat-label" data-en="Countries" data-de="Länder">Countries</div>
+    </div>
+  </div>
+
+  <!-- about -->
+  <section id="about" class="about">
+    <div class="section-eyebrow" data-en="About" data-de="Über mich">About</div>
+    <p class="about-lead"
+       data-en="I build strategic partnerships that move complex, regulated markets."
+       data-de="Ich baue strategische Partnerschaften, die komplexe, regulierte Märkte bewegen.">
+      I build strategic partnerships that move complex, regulated markets.
+    </p>
+    <div class="about-grid">
+      <p data-en="At Catalent Pharma Solutions I own a cumulative volume above €100M and run several flagship key accounts end-to-end — from first negotiation to global delivery across 15+ countries. In practice that means negotiating at decision-maker level with international clients and regulators, building durable long-term relationships, and acting as the central link between external stakeholders and internal cross-functional teams, including strategic updates at VP level."
+         data-de="Bei Catalent Pharma Solutions verantworte ich ein kumuliertes Projektvolumen von über €100M und steuere mehrere Flaggschiff-Accounts eigenverantwortlich über deren gesamten Lebenszyklus: von der ersten Verhandlung bis zur globalen Auslieferung in 15+ Ländern. In der Praxis heißt das: Ich verhandle auf Entscheiderebene mit internationalen Kunden und Regulatoren, baue belastbare, langfristige Beziehungen auf und bin das zentrale Bindeglied zwischen externen Stakeholdern und internen Cross-Functional-Teams – inklusive strategischer Updates auf VP-Ebene.">
+        At Catalent Pharma Solutions I own a cumulative volume above €100M and run several flagship key accounts end-to-end — from first negotiation to global delivery across 15+ countries. In practice that means negotiating at decision-maker level with international clients and regulators, building durable long-term relationships, and acting as the central link between external stakeholders and internal cross-functional teams, including strategic updates at VP level.
+      </p>
+      <p data-en="My MBA added a data-driven lens on growth and stakeholder value: I think in metrics, forecasts and lasting relationships rather than isolated projects — the difference between project delivery and real partnership building. I'm now moving into digital health, applying key-account leadership, negotiation and cross-team orchestration to the digitalization of patient care."
+         data-de="Mein MBA hat diese Erfahrung um einen datengetriebenen Blick auf Wachstum und Stakeholder-Wert ergänzt: Ich denke in Kennzahlen, Forecasts und nachhaltigen Beziehungen statt in Einzelprojekten – der Unterschied zwischen Projektsteuerung und echtem Partnership Building. Aktuell suche ich den Schritt in die Digital-Health-Branche, um Key-Account-Führung, Verhandlungsstärke und Cross-Team-Orchestrierung für die Digitalisierung der Patientenversorgung einzusetzen.">
+        My MBA added a data-driven lens on growth and stakeholder value: I think in metrics, forecasts and lasting relationships rather than isolated projects — the difference between project delivery and real partnership building. I'm now moving into digital health, applying key-account leadership, negotiation and cross-team orchestration to the digitalization of patient care.
+      </p>
+    </div>
+  </section>
+
+  <!-- value -->
+  <section id="value" class="value">
+    <div class="value-eyebrow" data-en="What I bring" data-de="Was ich mitbringe">What I bring</div>
+    <p class="value-lead"
+       data-en="Three things I do that move IT and partnership organizations forward."
+       data-de="Drei Dinge, die IT- und Partnership-Organisationen voranbringen.">
+      Three things I do that move IT and partnership organizations forward.
+    </p>
+    <div class="factors">
+
+      <div class="factor">
+        <div class="factor-header">
+          <div class="factor-num">01</div>
+          <div>
+            <h3 data-en="Steering global partner &amp; stakeholder networks under delivery pressure"
+                data-de="Steuerung globaler Partner- &amp; Stakeholder-Netzwerke unter Lieferdruck">
+              Steering global partner &amp; stakeholder networks under delivery pressure
+            </h3>
+            <span class="factor-tag">Cross-Border Stakeholder Management</span>
+          </div>
+        </div>
+        <p class="factor-why"
+           data-en="IT and partnership organizations scale through exactly this pattern: many autonomous external players — vendors, system integrators, tech partners — synchronized across time zones, jurisdictions and compliance regimes onto one shared delivery date. I've run that for 12+ parallel global programs across 15+ countries, as the central interface between clients and internal teams up to VP level."
+           data-de="IT- und Partnership-Organisationen skalieren über genau dieses Muster: viele autonome externe Akteure — Vendors, Systemintegratoren, Tech-Partner — über Zeitzonen, Rechtsräume und Compliance-Regimes hinweg auf einen gemeinsamen Liefertermin synchronisieren. Genau das steuere ich für 12+ parallele globale Programme über 15+ Länder, als zentrale Schnittstelle zwischen Kunden und internen Teams bis VP-Level.">
+          IT and partnership organizations scale through exactly this pattern: many autonomous external players — vendors, system integrators, tech partners — synchronized across time zones, jurisdictions and compliance regimes onto one shared delivery date. I've run that for 12+ parallel global programs across 15+ countries, as the central interface between clients and internal teams up to VP level.
+        </p>
+        <div class="factor-impact">
+          <div class="impact-label" data-en="Business Impact" data-de="Business Impact">Business Impact</div>
+          <div class="impact-text"
+               data-en="Less friction in partner onboarding, more robust governance during international expansion, lower escalation risk into senior management — carried over from an environment where a mistake doesn't mean &quot;ticket reopened&quot; but patient care."
+               data-de="Weniger Reibungsverluste beim Partner-Onboarding, robustere Governance bei internationaler Expansion, geringeres Eskalationsrisiko bis ins Senior Management — übertragen aus einem Umfeld, in dem ein Fehler nicht &quot;Ticket reopened&quot;, sondern Patientenversorgung bedeutet.">
+            Less friction in partner onboarding, more robust governance during international expansion, lower escalation risk into senior management — carried over from an environment where a mistake doesn't mean "ticket reopened" but patient care.
+          </div>
+        </div>
+      </div>
+
+      <div class="factor">
+        <div class="factor-header">
+          <div class="factor-num">02</div>
+          <div>
+            <h3 data-en="Translating between business needs and technical delivery"
+                data-de="Übersetzerin zwischen Business-Anforderung und technischer Umsetzung">
+              Translating between business needs and technical delivery
+            </h3>
+            <span class="factor-tag">Requirements Engineering / Tech-Business Bridge</span>
+          </div>
+        </div>
+        <p class="factor-why"
+           data-en="The most expensive gap in IT and partnership projects sits between what business and partners ask for and what engineering builds. Whoever speaks both languages fluently prevents friction, misinterpretation and scope creep right there. I translate complex requirements into robust functional and technical specs on an engineering foundation, with hybrid (agile + classic) project management."
+           data-de="Die teuerste Lücke in IT- und Partnership-Projekten liegt zwischen dem, was Business und Partner formulieren, und dem, was Engineering baut. Wer beide Sprachen fließend spricht, verhindert genau dort Reibung, Fehlinterpretation und Scope Creep. Ich übersetze komplexe Anforderungen in belastbare Funktions- und technische Spezifikationen — auf einem Ingenieurs-Fundament, ergänzt um hybrides (agil + klassisch) Projektmanagement.">
+          The most expensive gap in IT and partnership projects sits between what business and partners ask for and what engineering builds. Whoever speaks both languages fluently prevents friction, misinterpretation and scope creep right there. I translate complex requirements into robust functional and technical specs on an engineering foundation, with hybrid (agile + classic) project management.
+        </p>
+        <div class="factor-impact">
+          <div class="impact-label" data-en="Business Impact" data-de="Business Impact">Business Impact</div>
+          <div class="impact-text"
+               data-en="Fewer rework hours, shorter time-to-delivery, sharper requirement documents as the basis for robust partner and client contracts — and therefore lower risk of costly scope disputes."
+               data-de="Weniger Rework-Stunden, kürzere Time-to-Delivery, präzisere Anforderungsdokumente als Basis für belastbare Partner- und Kundenverträge — und damit geringeres Risiko kostspieliger Scope-Streitigkeiten.">
+            Fewer rework hours, shorter time-to-delivery, sharper requirement documents as the basis for robust partner and client contracts — and therefore lower risk of costly scope disputes.
+          </div>
+        </div>
+      </div>
+
+      <div class="factor">
+        <div class="factor-header">
+          <div class="factor-num">03</div>
+          <div>
+            <h3 data-en="Risk-driven financial governance instead of reactive project controlling"
+                data-de="Risikogetriebene Finanz-Governance statt reaktivem Projektcontrolling">
+              Risk-driven financial governance instead of reactive project controlling
+            </h3>
+            <span class="factor-tag">P&amp;L Responsibility / Proactive Risk Management</span>
+          </div>
+        </div>
+        <p class="factor-why"
+           data-en="IT projects and partnerships rarely fail on technology — they fail on late-spotted risk, unclear escalation paths and budget overruns that only surface in the status meeting. I treat risk and budget as live control variables, not a monthly report: full ownership of budget, revenue forecasting and invoicing, backed by KPI reporting and Power BI rather than gut feeling — which let me actively prevent four critical escalations."
+           data-de="IT-Projekte und Partnerschaften scheitern selten an der Technik — sondern an spät erkannten Risiken, unklaren Eskalationspfaden und Budget-Overruns, die erst im Status-Meeting auffallen. Ich behandle Risiko und Budget als laufende Steuerungsgröße, nicht als Monatsbericht: volle Verantwortung über Budget, Revenue Forecasting und Invoicing, gestützt auf KPI-Reporting und Power BI statt Bauchgefühl — wodurch ich vier kritische Eskalationen aktiv verhindert habe.">
+          IT projects and partnerships rarely fail on technology — they fail on late-spotted risk, unclear escalation paths and budget overruns that only surface in the status meeting. I treat risk and budget as live control variables, not a monthly report: full ownership of budget, revenue forecasting and invoicing, backed by KPI reporting and Power BI rather than gut feeling — which let me actively prevent four critical escalations.
+        </p>
+        <div class="factor-impact">
+          <div class="impact-label" data-en="Business Impact" data-de="Business Impact">Business Impact</div>
+          <div class="impact-text"
+               data-en="Margin protection on multi-million projects, more reliable forecasts for management and investor reporting, measurably fewer costly last-minute escalations — and therefore higher partner trust in your delivery reliability."
+               data-de="Margensicherung bei Multi-Millionen-Projekten, verlässlichere Forecasts für Management- und Investoren-Reporting, messbar weniger kostspielige Last-Minute-Eskalationen — und dadurch höheres Vertrauen von Partnern in die eigene Liefertreue.">
+            Margin protection on multi-million projects, more reliable forecasts for management and investor reporting, measurably fewer costly last-minute escalations — and therefore higher partner trust in your delivery reliability.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- experience -->
+  <section id="work" class="experience">
+    <div class="exp-heading" data-en="Experience" data-de="Berufserfahrung">Experience</div>
+
+    <div class="job">
+      <div>
+        <div class="job-dates">2020 — now</div>
+        <div class="job-company">Catalent Pharma Solutions</div>
+      </div>
+      <div>
+        <h3 data-en="Project Manager · Global Key Accounts" data-de="Projektmanagerin · Globale Key Accounts">
+          Project Manager · Global Key Accounts
+        </h3>
+        <p class="job-summary"
+           data-en="Own €100M+ across several flagship key accounts — negotiating at decision-maker level with international clients and regulators across 15+ countries, and leading a 6-person team."
+           data-de="Verantwortung für über €100M in mehreren Flaggschiff-Key-Accounts – mit Verhandlungen auf Entscheiderebene mit internationalen Kunden und Regulatoren in 15+ Ländern und Leitung eines 6-köpfigen Teams.">
+          Own €100M+ across several flagship key accounts — negotiating at decision-maker level with international clients and regulators across 15+ countries, and leading a 6-person team.
+        </p>
+        <button class="read-more-btn" onclick="openModal(0)" data-en="Read full role →" data-de="Vollständige Rolle ansehen →">Read full role →</button>
+      </div>
+    </div>
+
+    <div class="job">
+      <div>
+        <div class="job-dates">2018 — 2020</div>
+        <div class="job-company">Contexo GmbH</div>
+      </div>
+      <div>
+        <h3 data-en="Project Manager · Engineering &amp; Delivery" data-de="Projektmanagerin · Engineering &amp; Lieferung">
+          Project Manager · Engineering &amp; Delivery
+        </h3>
+        <p class="job-summary"
+           data-en="Led the largest project in company history (~€10M), coordinating 7 interconnected systems and cross-functional teams from concept to delivery under strict schedules."
+           data-de="Leitung des größten Projekts der Firmengeschichte (~10 Mio. €) – Koordination von 7 vernetzten Systemen und cross-funktionalen Teams vom Konzept bis zur Auslieferung.">
+          Led the largest project in company history (~€10M), coordinating 7 interconnected systems and cross-functional teams from concept to delivery under strict schedules.
+        </p>
+        <button class="read-more-btn" onclick="openModal(1)" data-en="Read full role →" data-de="Vollständige Rolle ansehen →">Read full role →</button>
+      </div>
+    </div>
+
+    <div class="job" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+      <div>
+        <div class="job-dates">2015 — 2018</div>
+        <div class="job-company">Klingele Papierwerke</div>
+      </div>
+      <div>
+        <h3 data-en="Dual Student · Process &amp; Technology" data-de="Duale Studentin · Prozess &amp; Technik">
+          Dual Student · Process &amp; Technology
+        </h3>
+        <p class="job-summary"
+           data-en="Integrated high-speed digital systems and drove measurable efficiency gains through Lean / Six Sigma across international production sites."
+           data-de="Integration von Hochgeschwindigkeits-Digitalsystemen und messbare Effizienzsteigerungen durch Lean / Six Sigma an internationalen Produktionsstandorten.">
+          Integrated high-speed digital systems and drove measurable efficiency gains through Lean / Six Sigma across international production sites.
+        </p>
+        <button class="read-more-btn" onclick="openModal(2)" data-en="Read full role →" data-de="Vollständige Rolle ansehen →">Read full role →</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- skills -->
+  <section id="skills" class="skills-section">
+    <div class="skills-heading" data-en="Skills &amp; Languages" data-de="Kompetenzen &amp; Sprachen">Skills &amp; Languages</div>
+    <div class="skills-list" id="skills-list">
+      <!-- populated by JS for lang switching -->
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer id="contact" class="footer">
+    <div class="footer-title"
+         data-en="Let's build a partnership worth scaling."
+         data-de="Lassen Sie uns eine Partnerschaft aufbauen, die sich skalieren lässt.">
+      Let's build a partnership worth scaling.
+    </div>
+    <div class="footer-links">
+      <a href="mailto:johannalandwehr@outlook.com">johannalandwehr@outlook.com</a>
+      <span>+49 152 22806356</span>
+      <a href="https://www.linkedin.com/in/johanna-landwehr" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- modal -->
+  <div class="modal-overlay hidden" id="modal-overlay" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <div class="modal-meta" id="modal-meta"></div>
+          <div class="modal-title" id="modal-title"></div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    const data = {
+      en: {
+        skills: [
+          "Partnership Management", "Key Account Management", "Decision-Level Negotiation",
+          "Stakeholder Management", "Business Development", "Cross-Functional Leadership",
+          "IT / Digital Project Management", "P&L Responsibility", "Risk Management",
+          "KPI Reporting & Forecasting", "Hybrid & Agile Project Management", "Lean / Six Sigma",
+          "SAP · JDE", "MBA · Strategic Management", "German · English C2 · Spanish B1 · French A1"
+        ],
+        jobs: [
+          {
+            dates: "2020 — now", company: "Catalent Pharma Solutions",
+            bullets: [
+              { h: "Strategic Account Leadership", t: "Own a cumulative volume above €100M across a 6-year tenure; manage several flagship key accounts, including leading a 6-person project team." },
+              { h: "Key Account & Partnership Management", t: "Act as the central point of contact for international key accounts and internal cross-functional teams — building durable long-term relationships and delivering strategic updates to VP-level stakeholders." },
+              { h: "Decision-Level Negotiation", t: "Negotiate scope, timelines, quotations and amendments directly with international clients and regulators, securing alignment and protecting account value at decision-maker level." },
+              { h: "End-to-End Program Ownership", t: "Direct the full lifecycle of 12+ simultaneous international programs across 15+ countries — from first negotiation through global distribution, depots and regulatory coordination, to close-out." },
+              { h: "Business Development & Commercial Ownership", t: "Own financial program management end-to-end — budget, quotation negotiations, revenue forecasting and the full invoicing process — to protect margin and grow account value." },
+              { h: "Proactive Risk Mitigation", t: "Lead identification of bottlenecks and project risks, averting 4 potential business-critical events through robust countermeasures and strategic solution planning." },
+              { h: "Digital & Hybrid Project Management", t: "Drive first-of-its-kind initiatives using hybrid (agile + waterfall) project management, new digital handling processes and specialized workflows under strict regulatory compliance." },
+              { h: "Operational Excellence", t: "Engineered workflow improvements that enhanced delivery reliability and cross-team coordination across multiple parallel work streams." }
+            ]
+          },
+          {
+            dates: "2018 — 2020", company: "Contexo GmbH",
+            bullets: [
+              { h: "Strategic Milestone Management", t: "Managed the largest project in company history (~€10M), coordinating 7 interconnected systems from concept to final delivery against strict schedules." },
+              { h: "Technical Project Leadership", t: "Translated complex Customer Requirements Specifications into detailed Functional & Technical Specifications, overseeing multiple integrated subsystems and technologies." },
+              { h: "Multi-Level Stakeholder Management", t: "Primary liaison between engineering, procurement, production and end-users, aligning efforts across multiple disciplines and external partners." },
+              { h: "Delivery Lifecycle Oversight", t: "Directed the full delivery cycle — design, procurement, quality control and final assembly — for high-throughput systems across multiple product types." },
+              { h: "Predictive Problem Solving", t: "Ran vulnerability assessments across integrated, continuous-motion systems and implemented contingency plans to maintain momentum." },
+              { h: "Validation & Commissioning", t: "Led FAT/SAT planning and execution for all systems, ensuring operational and regulatory compliance ahead of handover." },
+              { h: "Financial Integrity & Cost Control", t: "Managed budgets, tracked expenditures and optimized margins for multi-million-euro projects, ensuring accuracy across all billing cycles." }
+            ]
+          },
+          {
+            dates: "2015 — 2018", company: "Klingele Papierwerke",
+            bullets: [
+              { h: "Technical Integration of Digital Systems", t: "Deployed high-speed inkjet-printhead technology for variable-data printing and product individualization across production lines." },
+              { h: "Process Standardization", t: "Formulated a standardized maintenance and cleaning protocol, including technical documentation and staff training workshops." },
+              { h: "Cross-Border Operational Benchmarking", t: "Orchestrated an international comparative audit of optimization software between German and Spanish sites to identify synergies and reduce waste." },
+              { h: "Capacity Maximization", t: "Engineered strategies to use the full effective capacity of production equipment, directly increasing throughput and volume." },
+              { h: "Sustainable Material Innovation", t: "Directed R&D substituting synthetic packaging with high-performance fiber-based products." },
+              { h: "Advanced Lean Integration", t: "Improved Overall Equipment Effectiveness (OEE) via Six Sigma / DMAIC, implementing SMED and 5S to reduce setup time." },
+              { h: "Workforce Competency Mapping", t: "Designed a qualification matrix to evaluate technical skill sets, enabling data-driven personnel development." }
+            ]
+          }
+        ]
+      },
+      de: {
+        skills: [
+          "Partnership-Management", "Key-Account-Management", "Verhandlung auf Entscheiderebene",
+          "Stakeholder-Management", "Business Development", "Cross-funktionale Führung",
+          "IT- / Digitales Projektmanagement", "P&L-Verantwortung", "Risikomanagement",
+          "KPI-Reporting & Forecasting", "Hybrides & agiles Projektmanagement", "Lean / Six Sigma",
+          "SAP · JDE", "MBA · Strategic Management", "Deutsch · Englisch C2 · Spanisch B1 · Französisch A1"
+        ],
+        jobs: [
+          {
+            dates: "2020 — heute", company: "Catalent Pharma Solutions",
+            bullets: [
+              { h: "Strategische Account-Verantwortung", t: "Verantwortung für ein kumuliertes Volumen von über €100M über sechs Jahre; Betreuung mehrerer Flaggschiff-Key-Accounts inkl. Leitung eines 6-köpfigen Projektteams." },
+              { h: "Key-Account- & Partnerschaftsmanagement", t: "Zentrale Ansprechpartnerin für internationale Key Accounts und interne cross-funktionale Teams – Aufbau belastbarer langfristiger Beziehungen und strategisches Reporting an Stakeholder auf VP-Ebene." },
+              { h: "Verhandlung auf Entscheiderebene", t: "Verhandlung von Umfang, Zeitplänen, Angeboten und Anpassungen direkt mit internationalen Kunden und Regulatoren – zur Sicherung des Alignments und des Account-Werts auf Entscheiderebene." },
+              { h: "End-to-End-Programmverantwortung", t: "Steuerung des gesamten Lebenszyklus von 12+ parallelen internationalen Programmen in 15+ Ländern – von der ersten Verhandlung über globale Distribution, Depots und regulatorische Koordination bis zum Abschluss." },
+              { h: "Business Development & kaufmännische Steuerung", t: "End-to-End-Verantwortung für das finanzielle Programmmanagement – Budget, Angebotsverhandlungen, Umsatzprognosen und der gesamte Rechnungsprozess – zur Sicherung der Marge und Steigerung des Account-Werts." },
+              { h: "Proaktives Risikomanagement", t: "Frühzeitige Identifikation von Engpässen und Projektrisiken; vier potenziell geschäftskritische Ereignisse durch robuste Gegenmaßnahmen abgewendet." },
+              { h: "Digitales & hybrides Projektmanagement", t: "Umsetzung erstmaliger Initiativen mit hybridem (agil + klassisch) Projektmanagement, neuen digitalen Prozessen und Spezial-Workflows unter strenger regulatorischer Compliance." },
+              { h: "Operative Exzellenz", t: "Entwicklung von Prozessverbesserungen, die Liefertreue und teamübergreifende Koordination über mehrere parallele Workstreams hinweg erhöht haben." }
+            ]
+          },
+          {
+            dates: "2018 — 2020", company: "Contexo GmbH",
+            bullets: [
+              { h: "Strategisches Meilenstein-Management", t: "Leitung des größten Projekts der Firmengeschichte (~10 Mio. €) mit Koordination von 7 vernetzten Systemen vom Konzept bis zur finalen Auslieferung unter strikten Zeitplänen." },
+              { h: "Technische Projektleitung", t: "Übersetzung komplexer Kundenanforderungen (CRS) in detaillierte Funktions- und technische Spezifikationen; Steuerung mehrerer integrierter Subsysteme und Technologien." },
+              { h: "Stakeholder-Management auf mehreren Ebenen", t: "Zentrale Schnittstelle zwischen Engineering, Einkauf, Produktion und Endanwendern; Abstimmung über mehrere Disziplinen und externe Partner hinweg." },
+              { h: "Steuerung des Lieferzyklus", t: "Leitung des gesamten Lieferzyklus – Design, Beschaffung, Qualitätskontrolle und Endmontage – für Hochleistungssysteme über mehrere Produkttypen." },
+              { h: "Vorausschauende Problemlösung", t: "Durchführung von Schwachstellenanalysen an integrierten Systemen mit kontinuierlicher Bewegung; Umsetzung von Notfallplänen zur Aufrechterhaltung des Fortschritts." },
+              { h: "Validierung & Inbetriebnahme", t: "Planung und Durchführung von FAT/SAT für alle Systeme zur Sicherstellung der betrieblichen und regulatorischen Konformität vor der Übergabe." },
+              { h: "Finanzielle Integrität & Kostenkontrolle", t: "Budgetverwaltung, Ausgabenkontrolle und Margenoptimierung für Multi-Millionen-Euro-Projekte mit Genauigkeit über alle Abrechnungszyklen." }
+            ]
+          },
+          {
+            dates: "2015 — 2018", company: "Klingele Papierwerke",
+            bullets: [
+              { h: "Technische Integration digitaler Systeme", t: "Einführung von Hochgeschwindigkeits-Inkjet-Technologie für variable Datendruck und Produktindividualisierung in der Produktion." },
+              { h: "Prozessstandardisierung", t: "Entwicklung eines standardisierten Wartungs- und Reinigungsprotokolls inkl. technischer Dokumentation und Schulungsworkshops." },
+              { h: "Grenzüberschreitendes Benchmarking", t: "Organisation eines internationalen Vergleichs-Audits von Optimierungssoftware zwischen deutschen und spanischen Standorten zur Identifikation von Synergien." },
+              { h: "Kapazitätsmaximierung", t: "Entwicklung von Strategien zur vollen Nutzung der Anlagenkapazität und damit direkte Steigerung von Durchsatz und Volumen." },
+              { h: "Nachhaltige Materialinnovation", t: "Leitung von F&E zur Substitution synthetischer Verpackungen durch leistungsstarke faserbasierte Produkte." },
+              { h: "Fortgeschrittene Lean-Integration", t: "Steigerung der Gesamtanlageneffektivität (OEE) durch Six Sigma / DMAIC sowie SMED und 5S zur Reduktion von Rüstzeiten." },
+              { h: "Kompetenz-Mapping", t: "Entwicklung einer Qualifikationsmatrix zur Bewertung technischer Fähigkeiten als Basis für datengestützte Personalentwicklung." }
+            ]
+          }
+        ]
+      }
+    };
+
+    let lang = 'en';
+    let currentJobIndex = null;
+
+    function toggleLang() {
+      lang = lang === 'en' ? 'de' : 'en';
+      applyLang();
+    }
+
+    function applyLang() {
+      // Update lang button
+      document.querySelector('.lang-current').textContent = lang.toUpperCase();
+      document.querySelector('.lang-other').textContent = lang === 'en' ? 'DE' : 'EN';
+
+      // Update all data-en/data-de elements
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        if (val) el.innerHTML = val;
+      });
+
+      // Rebuild skills
+      renderSkills();
+
+      // Refresh modal if open
+      if (currentJobIndex !== null) renderModal(currentJobIndex);
+    }
+
+    function renderSkills() {
+      const list = document.getElementById('skills-list');
+      list.innerHTML = data[lang].skills.map(s =>
+        `<span class="skill-pill">${s}</span>`
+      ).join('');
+    }
+
+    function openModal(idx) {
+      currentJobIndex = idx;
+      renderModal(idx);
+      document.getElementById('modal-overlay').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderModal(idx) {
+      const job = data[lang].jobs[idx];
+      document.getElementById('modal-meta').textContent = job.dates + ' · ' + job.company;
+      // Get the title from the DOM (already translated)
+      const jobEls = document.querySelectorAll('.job h3');
+      document.getElementById('modal-title').textContent = jobEls[idx]?.textContent?.trim() || '';
+      document.getElementById('modal-body').innerHTML = job.bullets.map(b => `
+        <div class="bullet">
+          <div class="bullet-dot"></div>
+          <div>
+            <div class="bullet-head">${b.h}</div>
+            <div class="bullet-text">${b.t}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.add('hidden');
+      document.body.style.overflow = '';
+      currentJobIndex = null;
+    }
+
+    // Close modal on Escape
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // Init
+    renderSkills();
+  </script>
+</body>
+</html>
