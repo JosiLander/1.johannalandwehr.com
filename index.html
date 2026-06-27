@@ -6,13 +6,14 @@
   <title>Johanna Landwehr — Senior Partnership & Key Account Manager</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg: #15180f;
       --bg-card: #1a1e12;
+      --bg-card-hover: #1d2114;
       --bg-deep: #11140c;
       --text: #ece7dc;
       --text-muted: rgba(236,231,220,.7);
@@ -100,6 +101,11 @@
       font: 400 56px 'Cormorant Garamond', serif;
       color: var(--green);
     }
+    .hero-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     .hero-eyebrow {
       font: 500 12px/1 'IBM Plex Mono', monospace;
       letter-spacing: .24em;
@@ -111,7 +117,7 @@
       font: 400 70px/1.05 'Cormorant Garamond', serif;
       letter-spacing: .01em;
       margin: 0 auto 26px;
-      max-width: 19ch;
+      max-width: 17ch;
     }
     .hero-sub {
       font-size: 17px;
@@ -166,7 +172,7 @@
       color: var(--green);
     }
     .stat-label {
-      font-size: 12px;
+      font: 500 12px/1 'IBM Plex Mono', monospace;
       letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--text-dim);
@@ -190,7 +196,8 @@
       font: 400 32px/1.4 'Cormorant Garamond', serif;
       color: var(--text);
       margin: 0 0 30px;
-      max-width: 24ch;
+      max-width: 877px;
+      text-wrap: pretty;
     }
     .about-grid {
       display: grid;
@@ -239,7 +246,7 @@
     }
     .factor-num {
       font: 400 46px/.85 'Cormorant Garamond', serif;
-      color: var(--green-faint);
+      color: rgba(156,180,111,.5);
       flex: none;
     }
     .factor h3 {
@@ -303,6 +310,7 @@
       margin-bottom: 34px;
       border-bottom: 1px solid var(--border);
     }
+    .job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .job-dates {
       font: 400 18px/1.2 'Cormorant Garamond', serif;
       color: var(--green);
@@ -341,7 +349,7 @@
     .skills-section {
       padding: 34px 56px 64px;
       text-align: center;
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
     }
     .skills-heading {
@@ -351,19 +359,113 @@
       color: var(--text-faint);
       margin-bottom: 26px;
     }
-    .skills-list {
+    .skills-table {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .skill-row {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 18px 0;
+      border-top: 1px solid rgba(236,231,220,.1);
+    }
+    .skill-row:last-child { border-bottom: 1px solid rgba(236,231,220,.1); }
+    .skill-category {
+      font: 500 11px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--green);
+      padding-top: 4px;
+    }
+    .skill-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      max-width: 880px;
-      margin: 0 auto;
+      gap: 8px;
     }
     .skill-pill {
-      border: 1px solid rgba(236,231,220,.22);
+      border: 1px solid rgba(236,231,220,.2);
       border-radius: 999px;
-      padding: 9px 17px;
+      padding: 6px 14px;
       font-size: 13px;
+      color: rgba(236,231,220,.85);
+    }
+
+    /* ── More / Writing & Building ── */
+    .more-section {
+      padding: 50px 64px 66px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .more-eyebrow {
+      text-align: center;
+      font: 500 12px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      margin-bottom: 14px;
+    }
+    .more-lead {
+      text-align: center;
+      font: 400 30px/1.32 'Cormorant Garamond', serif;
+      margin: 0 auto 46px;
+      max-width: 38ch;
+      color: var(--text);
+    }
+    .link-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+    .link-card {
+      display: block;
+      background: var(--bg-card);
+      border: 1px solid rgba(236,231,220,.13);
+      border-radius: 5px;
+      padding: 34px 38px;
+      position: relative;
+      transition: border-color .2s, background .2s;
+      color: var(--text);
+    }
+    .link-card:hover {
+      border-color: rgba(156,180,111,.5);
+      background: var(--bg-card-hover);
+    }
+    .link-card-eyebrow {
+      font: 500 11px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+    .link-card-badge {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(58,86,45,.5);
+      border: 1px solid rgba(156,180,111,.35);
+      color: #cdd9b3;
+      font: 500 11px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .04em;
+      padding: 5px 10px;
+      border-radius: 999px;
+    }
+    .link-card-title {
+      font: 500 22px/1.2 'Cormorant Garamond', serif;
+      margin-bottom: 14px;
+    }
+    .link-card-desc {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .link-card-cta {
+      font: 500 12px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .08em;
+      color: var(--green);
     }
 
     /* ── Footer ── */
@@ -474,11 +576,11 @@
     }
 
     /* ── Responsive ── */
-    @media (max-width: 768px) {
+    @media (max-width: 720px) {
       .nav { padding: 20px 24px; flex-wrap: wrap; gap: 16px; }
-      .nav-links { gap: 16px; flex-wrap: wrap; }
+      .nav-links { gap: 14px; flex-wrap: wrap; }
       .hero { padding: 56px 24px 40px; }
-      .hero h1 { font-size: 48px; }
+      .hero h1 { font-size: clamp(40px, 9vw, 70px); }
       .stats { gap: 40px; padding: 30px 24px; }
       .about { padding: 48px 24px 40px; }
       .about-grid { grid-template-columns: 1fr; }
@@ -487,6 +589,9 @@
       .experience { padding: 40px 24px 30px; }
       .job { grid-template-columns: 1fr; gap: 8px; }
       .skills-section { padding: 24px 24px 48px; }
+      .skill-row { grid-template-columns: 1fr; gap: 10px; }
+      .more-section { padding: 40px 24px 50px; }
+      .link-cards { grid-template-columns: 1fr; }
       .footer { padding: 48px 24px; }
       .modal-header { padding: 24px 24px 18px; }
       .modal-body { padding: 20px 24px 28px; }
@@ -504,6 +609,7 @@
         <a href="#value" data-en="Strengths" data-de="Stärken">Strengths</a>
         <a href="#work" data-en="Work" data-de="Werdegang">Work</a>
         <a href="#skills" data-en="Skills" data-de="Kompetenzen">Skills</a>
+        <a href="#more" data-en="More" data-de="Mehr">More</a>
         <a href="#contact" data-en="Contact" data-de="Kontakt">Contact</a>
         <button class="lang-btn" onclick="toggleLang()">
           <span class="dim lang-current">EN</span><span>/</span><span class="lang-other" style="font-weight:600">DE</span>
@@ -515,17 +621,19 @@
   <!-- hero -->
   <div class="hero">
     <div class="hero-avatar">JL</div>
-    <div class="hero-eyebrow" data-en="Senior Partnership &amp; Key Account Manager · MBA" data-de="Senior Partnership &amp; Key Account Manager · MBA">
-      Senior Partnership &amp; Key Account Manager · MBA
+    <div class="hero-eyebrow"
+         data-en="Where Engineering Rigor Meets Commercial Ownership"
+         data-de="Wo Engineering-Präzision auf kommerzielle Verantwortung trifft">
+      Where Engineering Rigor Meets Commercial Ownership
     </div>
-    <h1 data-en="I build partnerships that scale portfolios — and patient care."
-        data-de="Ich baue Partnerschaften, die Portfolios skalieren – und die Patientenversorgung.">
-      I build partnerships that scale portfolios — and patient care.
+    <h1 data-en="I build partnerships that scale portfolios."
+        data-de="Ich baue Partnerschaften, die Portfolios skalieren.">
+      I build partnerships that scale portfolios.
     </h1>
     <p class="hero-sub"
-       data-en="Six years building strategic partnerships across healthcare — owning €100M+ in key accounts, negotiating at decision-maker level across 15+ countries, and orchestrating the cross-functional teams that deliver."
-       data-de="Sechs Jahre Aufbau strategischer Partnerschaften im Gesundheitswesen – mit über €100M Account-Verantwortung, Verhandlungen auf Entscheiderebene in 15+ Ländern und der Orchestrierung cross-funktionaler Teams.">
-      Six years building strategic partnerships across healthcare — owning €100M+ in key accounts, negotiating at decision-maker level across 15+ countries, and orchestrating the cross-functional teams that deliver.
+       data-en="More than six years building strategic partnerships across healthcare — owning €100M+ in key accounts, negotiating at decision-maker level across 15+ countries, and orchestrating the cross-functional teams that deliver."
+       data-de="Über sechs Jahre Aufbau strategischer Partnerschaften im Gesundheitswesen – mit über €100M Account-Verantwortung, Verhandlungen auf Entscheiderebene in 15+ Ländern und der Orchestrierung cross-funktionaler Teams.">
+      More than six years building strategic partnerships across healthcare — owning €100M+ in key accounts, negotiating at decision-maker level across 15+ countries, and orchestrating the cross-functional teams that deliver.
     </p>
     <div class="hero-ctas">
       <a href="mailto:johannalandwehr@outlook.com" class="btn-primary" data-en="Email me" data-de="Schreiben Sie mir">Email me</a>
@@ -541,8 +649,8 @@
       <div class="stat-label" data-en="Key accounts led" data-de="Key Accounts geführt">Key accounts led</div>
     </div>
     <div class="stat">
-      <div class="stat-num">6 yrs</div>
-      <div class="stat-label" data-en="Years in healthcare" data-de="Jahre im Healthcare">Years in healthcare</div>
+      <div class="stat-num">7+</div>
+      <div class="stat-label" data-en="Years experience" data-de="Jahre Erfahrung">Years experience</div>
     </div>
     <div class="stat">
       <div class="stat-num">15+</div>
@@ -588,7 +696,7 @@
                 data-de="Steuerung globaler Partner- &amp; Stakeholder-Netzwerke unter Lieferdruck">
               Steering global partner &amp; stakeholder networks under delivery pressure
             </h3>
-            <span class="factor-tag">Cross-Border Stakeholder Management</span>
+            <span class="factor-tag" data-en="Cross-Border Stakeholder Management" data-de="Cross-Border Stakeholder Management">Cross-Border Stakeholder Management</span>
           </div>
         </div>
         <p class="factor-why"
@@ -597,7 +705,7 @@
           IT and partnership organizations scale through exactly this pattern: many autonomous external players — vendors, system integrators, tech partners — synchronized across time zones, jurisdictions and compliance regimes onto one shared delivery date. I've run that for 12+ parallel global programs across 15+ countries, as the central interface between clients and internal teams up to VP level.
         </p>
         <div class="factor-impact">
-          <div class="impact-label" data-en="Business Impact" data-de="Business Impact">Business Impact</div>
+          <div class="impact-label">Business Impact</div>
           <div class="impact-text"
                data-en="Less friction in partner onboarding, more robust governance during international expansion, lower escalation risk into senior management — carried over from an environment where a mistake doesn't mean &quot;ticket reopened&quot; but patient care."
                data-de="Weniger Reibungsverluste beim Partner-Onboarding, robustere Governance bei internationaler Expansion, geringeres Eskalationsrisiko bis ins Senior Management — übertragen aus einem Umfeld, in dem ein Fehler nicht &quot;Ticket reopened&quot;, sondern Patientenversorgung bedeutet.">
@@ -614,7 +722,7 @@
                 data-de="Übersetzerin zwischen Business-Anforderung und technischer Umsetzung">
               Translating between business needs and technical delivery
             </h3>
-            <span class="factor-tag">Requirements Engineering / Tech-Business Bridge</span>
+            <span class="factor-tag" data-en="Requirements Engineering / Tech-Business Bridge" data-de="Requirements Engineering / Tech-Business-Bridge">Requirements Engineering / Tech-Business Bridge</span>
           </div>
         </div>
         <p class="factor-why"
@@ -623,7 +731,7 @@
           The most expensive gap in IT and partnership projects sits between what business and partners ask for and what engineering builds. Whoever speaks both languages fluently prevents friction, misinterpretation and scope creep right there. I translate complex requirements into robust functional and technical specs on an engineering foundation, with hybrid (agile + classic) project management.
         </p>
         <div class="factor-impact">
-          <div class="impact-label" data-en="Business Impact" data-de="Business Impact">Business Impact</div>
+          <div class="impact-label">Business Impact</div>
           <div class="impact-text"
                data-en="Fewer rework hours, shorter time-to-delivery, sharper requirement documents as the basis for robust partner and client contracts — and therefore lower risk of costly scope disputes."
                data-de="Weniger Rework-Stunden, kürzere Time-to-Delivery, präzisere Anforderungsdokumente als Basis für belastbare Partner- und Kundenverträge — und damit geringeres Risiko kostspieliger Scope-Streitigkeiten.">
@@ -640,7 +748,7 @@
                 data-de="Risikogetriebene Finanz-Governance statt reaktivem Projektcontrolling">
               Risk-driven financial governance instead of reactive project controlling
             </h3>
-            <span class="factor-tag">P&amp;L Responsibility / Proactive Risk Management</span>
+            <span class="factor-tag" data-en="P&amp;L Responsibility / Proactive Risk Management" data-de="P&amp;L Responsibility / Proactive Risk Management">P&amp;L Responsibility / Proactive Risk Management</span>
           </div>
         </div>
         <p class="factor-why"
@@ -649,7 +757,7 @@
           IT projects and partnerships rarely fail on technology — they fail on late-spotted risk, unclear escalation paths and budget overruns that only surface in the status meeting. I treat risk and budget as live control variables, not a monthly report: full ownership of budget, revenue forecasting and invoicing, backed by KPI reporting and Power BI rather than gut feeling — which let me actively prevent four critical escalations.
         </p>
         <div class="factor-impact">
-          <div class="impact-label" data-en="Business Impact" data-de="Business Impact">Business Impact</div>
+          <div class="impact-label">Business Impact</div>
           <div class="impact-text"
                data-en="Margin protection on multi-million projects, more reliable forecasts for management and investor reporting, measurably fewer costly last-minute escalations — and therefore higher partner trust in your delivery reliability."
                data-de="Margensicherung bei Multi-Millionen-Projekten, verlässlichere Forecasts für Management- und Investoren-Reporting, messbar weniger kostspielige Last-Minute-Eskalationen — und dadurch höheres Vertrauen von Partnern in die eigene Liefertreue.">
@@ -667,7 +775,7 @@
 
     <div class="job">
       <div>
-        <div class="job-dates">2020 — now</div>
+        <div class="job-dates" data-en="2020 — now" data-de="2020 — heute">2020 — now</div>
         <div class="job-company">Catalent Pharma Solutions</div>
       </div>
       <div>
@@ -701,7 +809,7 @@
       </div>
     </div>
 
-    <div class="job" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+    <div class="job">
       <div>
         <div class="job-dates">2015 — 2018</div>
         <div class="job-company">Klingele Papierwerke</div>
@@ -723,9 +831,44 @@
 
   <!-- skills -->
   <section id="skills" class="skills-section">
-    <div class="skills-heading" data-en="Skills &amp; Languages" data-de="Kompetenzen &amp; Sprachen">Skills &amp; Languages</div>
-    <div class="skills-list" id="skills-list">
+    <div class="skills-heading" id="skills-heading" data-en="Skills &amp; Languages" data-de="Kompetenzen &amp; Sprachen">Skills &amp; Languages</div>
+    <div class="skills-table" id="skills-table">
       <!-- populated by JS for lang switching -->
+    </div>
+  </section>
+
+  <!-- more / writing & building -->
+  <section id="more" class="more-section">
+    <div class="more-eyebrow" data-en="Writing &amp; Building" data-de="Schreiben &amp; Bauen">Writing &amp; Building</div>
+    <p class="more-lead"
+       data-en="Beyond the day job — where I share what I learn and build what's next."
+       data-de="Neben dem Job – wo ich teile, was ich lerne, und baue, was als Nächstes kommt.">
+      Beyond the day job — where I share what I learn and build what's next.
+    </p>
+    <div class="link-cards">
+      <a class="link-card" href="https://www.linkedin.com/posts/johanna-landwehr_copilot-pm-pharma-ugcPost-7458147939639566336-pe1K/" target="_blank" rel="noopener">
+        <div class="link-card-eyebrow" data-en="Writing · LinkedIn" data-de="Beitrag · LinkedIn">Writing · LinkedIn</div>
+        <div class="link-card-title" data-en="AI Integration in Regulated Industries: A Project Manager's Lab Report" data-de="AI Integration in Regulated Industries: A Project Manager's Lab Report">
+          AI Integration in Regulated Industries: A Project Manager's Lab Report
+        </div>
+        <div class="link-card-desc"
+             data-en="An honest, data-backed field report on putting Microsoft 365 Copilot to work in a compliance-heavy pharma environment — where it cut material calculations by 92%, caught errors humans miss, and where I still deliberately slow it down."
+             data-de="Ein ehrlicher, datengestützter Erfahrungsbericht über den Einsatz von Microsoft 365 Copilot im streng regulierten Pharma-Umfeld – wo es Materialberechnungen um 92% verkürzte, Fehler aufspürte, die Menschen übersehen, und wo ich es bewusst ausbremse.">
+          An honest, data-backed field report on putting Microsoft 365 Copilot to work in a compliance-heavy pharma environment — where it cut material calculations by 92%, caught errors humans miss, and where I still deliberately slow it down.
+        </div>
+        <div class="link-card-cta" data-en="Read on LinkedIn →" data-de="Auf LinkedIn lesen →">Read on LinkedIn →</div>
+      </a>
+      <a class="link-card" href="https://culinalabs.com" target="_blank" rel="noopener">
+        <div class="link-card-badge" data-en="Founder · In progress" data-de="Gründerin · In Arbeit">Founder · In progress</div>
+        <div class="link-card-eyebrow" data-en="Building" data-de="Projekt">Building</div>
+        <div class="link-card-title">Culina</div>
+        <div class="link-card-desc"
+             data-en="A household food companion that adapts to your rhythm and handles the details from plan to plate — effortless meals, every day."
+             data-de="Ein Haushalts-Food-Companion, der sich deinem Rhythmus anpasst und alles von der Planung bis zum Teller übernimmt – mühelose Mahlzeiten, jeden Tag.">
+          A household food companion that adapts to your rhythm and handles the details from plan to plate — effortless meals, every day.
+        </div>
+        <div class="link-card-cta" data-en="Visit culinalabs.com →" data-de="culinalabs.com besuchen →">Visit culinalabs.com →</div>
+      </a>
     </div>
   </section>
 
@@ -760,12 +903,13 @@
   <script>
     const data = {
       en: {
-        skills: [
-          "Partnership Management", "Key Account Management", "Decision-Level Negotiation",
-          "Stakeholder Management", "Business Development", "Cross-Functional Leadership",
-          "IT / Digital Project Management", "P&L Responsibility", "Risk Management",
-          "KPI Reporting & Forecasting", "Hybrid & Agile Project Management", "Lean / Six Sigma",
-          "SAP · JDE", "MBA · Strategic Management", "German · English C2 · Spanish B1 · French A1"
+        skillGroups: [
+          { label: "Languages", items: ["German (native)", "English (C2)", "Spanish (B1)", "French (A1)"] },
+          { label: "Management", items: ["Partnership Management", "Key Account Management", "Decision-Level Negotiation", "Stakeholder Management", "P&L Responsibility", "Requirements Engineering", "Risk Management", "Business Development", "Cross-Functional Leadership"] },
+          { label: "Agile Methodologies", items: ["Hybrid Project Management", "Sprint Planning", "Backlog Prioritisation"] },
+          { label: "Data & Analytics", items: ["Data-Driven Decision Making", "Power BI", "Excel VBA & Pivot", "KPI Reporting"] },
+          { label: "Systems & Processes", items: ["ERP (SAP · JDE)", "Change Management", "Lean / Six Sigma (SMED, 5S)"] },
+          { label: "Productivity Tools", items: ["MS Project", "MS 365 Copilot", "Google AI Pro", "Notion", "Slack", "Figma", "Cursor", "AutoCAD"] }
         ],
         jobs: [
           {
@@ -808,12 +952,13 @@
         ]
       },
       de: {
-        skills: [
-          "Partnership-Management", "Key-Account-Management", "Verhandlung auf Entscheiderebene",
-          "Stakeholder-Management", "Business Development", "Cross-funktionale Führung",
-          "IT- / Digitales Projektmanagement", "P&L-Verantwortung", "Risikomanagement",
-          "KPI-Reporting & Forecasting", "Hybrides & agiles Projektmanagement", "Lean / Six Sigma",
-          "SAP · JDE", "MBA · Strategic Management", "Deutsch · Englisch C2 · Spanisch B1 · Französisch A1"
+        skillGroups: [
+          { label: "Sprachen", items: ["Deutsch (Muttersprache)", "Englisch (C2)", "Spanisch (B1)", "Französisch (A1)"] },
+          { label: "Management", items: ["Partnership-Management", "Key-Account-Management", "Verhandlung auf Entscheiderebene", "Stakeholder-Management", "P&L-Verantwortung", "Requirements Engineering", "Risikomanagement", "Business Development", "Cross-funktionale Führung"] },
+          { label: "Agile Methoden", items: ["Hybrides Projektmanagement", "Sprint Planning", "Backlog-Priorisierung"] },
+          { label: "Data & Analytics", items: ["Datengetriebene Entscheidungen", "Power BI", "Excel VBA & Pivot", "KPI-Reporting"] },
+          { label: "Systeme & Prozesse", items: ["ERP (SAP · JDE)", "Change Management", "Lean / Six Sigma (SMED, 5S)"] },
+          { label: "Produktivitäts-Tools", items: ["MS Project", "MS 365 Copilot", "Google AI Pro", "Notion", "Slack", "Figma", "Cursor", "AutoCAD"] }
         ],
         jobs: [
           {
@@ -862,32 +1007,33 @@
 
     function toggleLang() {
       lang = lang === 'en' ? 'de' : 'en';
+      document.documentElement.lang = lang;
       applyLang();
+      try { localStorage.setItem('lang', lang); } catch(e) {}
     }
 
     function applyLang() {
-      // Update lang button
       document.querySelector('.lang-current').textContent = lang.toUpperCase();
       document.querySelector('.lang-other').textContent = lang === 'en' ? 'DE' : 'EN';
 
-      // Update all data-en/data-de elements
       document.querySelectorAll('[data-en]').forEach(el => {
         const val = el.getAttribute('data-' + lang);
         if (val) el.innerHTML = val;
       });
 
-      // Rebuild skills
       renderSkills();
 
-      // Refresh modal if open
       if (currentJobIndex !== null) renderModal(currentJobIndex);
     }
 
     function renderSkills() {
-      const list = document.getElementById('skills-list');
-      list.innerHTML = data[lang].skills.map(s =>
-        `<span class="skill-pill">${s}</span>`
-      ).join('');
+      const table = document.getElementById('skills-table');
+      table.innerHTML = data[lang].skillGroups.map(g => `
+        <div class="skill-row">
+          <div class="skill-category">${g.label}</div>
+          <div class="skill-pills">${g.items.map(i => `<span class="skill-pill">${i}</span>`).join('')}</div>
+        </div>
+      `).join('');
     }
 
     function openModal(idx) {
@@ -900,7 +1046,6 @@
     function renderModal(idx) {
       const job = data[lang].jobs[idx];
       document.getElementById('modal-meta').textContent = job.dates + ' · ' + job.company;
-      // Get the title from the DOM (already translated)
       const jobEls = document.querySelectorAll('.job h3');
       document.getElementById('modal-title').textContent = jobEls[idx]?.textContent?.trim() || '';
       document.getElementById('modal-body').innerHTML = job.bullets.map(b => `
@@ -920,10 +1065,13 @@
       currentJobIndex = null;
     }
 
-    // Close modal on Escape
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    // Init
+    // Init — restore saved language preference
+    try {
+      const saved = localStorage.getItem('lang');
+      if (saved === 'de') { lang = 'de'; applyLang(); }
+    } catch(e) {}
     renderSkills();
   </script>
 </body>
