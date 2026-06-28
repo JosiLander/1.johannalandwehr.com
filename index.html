@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,28 +10,45 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
+    :root, [data-theme="dark"] {
       --bg: #15180f;
-      --bg-card: #1a1e12;
-      --bg-card-hover: #1d2114;
-      --bg-deep: #11140c;
-      --text: #ece7dc;
-      --text-muted: rgba(236,231,220,.7);
-      --text-dim: rgba(236,231,220,.5);
-      --text-faint: rgba(236,231,220,.4);
-      --border: rgba(236,231,220,.12);
-      --green: #9cb46f;
-      --green-dark: #3A562D;
-      --green-faint: rgba(156,180,111,.5);
+      --bg2: #11140c;
+      --surface: #1a1e12;
+      --surface-hover: #1d2114;
+      --fg: #ece7dc;
+      --fg-rgb: 236,231,220;
+      --accent: #9cb46f;
+      --accent-rgb: 156,180,111;
+      --green: #3A562D;
+      --on-green: #f3efe6;
+      --overlay: rgba(8,9,5,.72);
     }
 
-    html { scroll-behavior: smooth; }
+    [data-theme="light"] {
+      --bg: #f4f0e7;
+      --bg2: #ece7da;
+      --surface: #fbf9f3;
+      --surface-hover: #f2eee2;
+      --fg: #23281a;
+      --fg-rgb: 35,40,26;
+      --accent: #4f6a31;
+      --accent-rgb: 79,106,49;
+      --green: #3a562d;
+      --on-green: #f6f3ea;
+      --overlay: rgba(28,30,20,.5);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      transition: background-color .35s ease, color .35s ease;
+    }
 
     body {
       background: var(--bg);
-      color: var(--text);
+      color: var(--fg);
       font-family: 'IBM Plex Sans', sans-serif;
       min-height: 100vh;
+      transition: background-color .35s ease, color .35s ease;
     }
 
     a { text-decoration: none; }
@@ -45,7 +62,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 26px 64px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(var(--fg-rgb),.12);
       max-width: 1180px;
       margin: 0 auto;
     }
@@ -59,17 +76,33 @@
       align-items: center;
       font-size: 13px;
       letter-spacing: .04em;
-      color: rgba(236,231,220,.62);
+      color: rgba(var(--fg-rgb),.62);
     }
     .nav-links a { color: inherit; transition: color .2s; }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover { color: var(--fg); }
+    .theme-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: transparent;
+      border: 1px solid rgba(var(--fg-rgb),.28);
+      color: var(--fg);
+      font-size: 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+      line-height: 1;
+    }
+    .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
     .lang-btn {
       display: flex;
       align-items: center;
       gap: 6px;
       background: transparent;
-      border: 1px solid rgba(236,231,220,.28);
-      color: var(--text);
+      border: 1px solid rgba(var(--fg-rgb),.28);
+      color: var(--fg);
       font: 500 12px/1 'IBM Plex Mono', monospace;
       letter-spacing: .08em;
       padding: 7px 12px;
@@ -77,7 +110,7 @@
       cursor: pointer;
       transition: border-color .2s, color .2s;
     }
-    .lang-btn:hover { border-color: var(--green); color: var(--green); }
+    .lang-btn:hover { border-color: var(--accent); color: var(--accent); }
     .lang-btn .dim { opacity: .55; }
 
     /* ── Hero ── */
@@ -93,13 +126,14 @@
       border-radius: 50%;
       margin: 0 auto;
       overflow: hidden;
-      box-shadow: 0 0 0 1px rgba(236,231,220,.18), 0 0 0 7px rgba(58,86,45,.35);
+      box-shadow: 0 0 0 1px rgba(var(--fg-rgb),.18), 0 0 0 7px rgba(58,86,45,.35);
       background: rgba(58,86,45,.2);
       display: flex;
       align-items: center;
       justify-content: center;
       font: 400 56px 'Cormorant Garamond', serif;
-      color: var(--green);
+      color: var(--accent);
+      position: relative;
     }
     .hero-avatar img {
       width: 100%;
@@ -108,13 +142,12 @@
       position: absolute;
       inset: 0;
     }
-    .hero-avatar { position: relative; }
     .hero-avatar img:not([style*="display:none"]) ~ .avatar-fallback { display: none; }
     .hero-eyebrow {
       font: 500 12px/1 'IBM Plex Mono', monospace;
       letter-spacing: .24em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--accent);
       margin: 36px 0 22px;
     }
     .hero h1 {
@@ -125,7 +158,7 @@
     .hero-sub {
       font-size: 17px;
       line-height: 1.7;
-      color: var(--text-muted);
+      color: rgba(var(--fg-rgb),.7);
       max-width: 56ch;
       margin: 0 auto 38px;
     }
@@ -136,26 +169,26 @@
       flex-wrap: wrap;
     }
     .btn-primary {
-      background: var(--green-dark);
-      color: #f3efe6;
+      background: var(--green);
+      color: var(--on-green);
       padding: 15px 30px;
       border-radius: 2px;
       font-size: 14px;
       font-weight: 500;
       letter-spacing: .02em;
-      transition: background .2s;
+      transition: filter .2s;
     }
-    .btn-primary:hover { background: #4a6d3b; }
+    .btn-primary:hover { filter: brightness(1.15); }
     .btn-outline {
-      border: 1px solid rgba(236,231,220,.3);
+      border: 1px solid rgba(var(--fg-rgb),.3);
       padding: 15px 30px;
       border-radius: 2px;
       font-size: 14px;
       letter-spacing: .02em;
-      color: var(--text);
+      color: var(--fg);
       transition: border-color .2s;
     }
-    .btn-outline:hover { border-color: rgba(236,231,220,.6); }
+    .btn-outline:hover { border-color: rgba(var(--fg-rgb),.6); }
 
     /* ── Stats ── */
     .stats {
@@ -163,8 +196,8 @@
       justify-content: center;
       gap: 72px;
       padding: 38px 56px;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      border-top: 1px solid rgba(var(--fg-rgb),.12);
+      border-bottom: 1px solid rgba(var(--fg-rgb),.12);
       max-width: 1180px;
       margin: 0 auto;
       flex-wrap: wrap;
@@ -172,13 +205,13 @@
     .stat { text-align: center; }
     .stat-num {
       font: 400 46px/1 'Cormorant Garamond', serif;
-      color: var(--green);
+      color: var(--accent);
     }
     .stat-label {
       font: 500 12px/1 'IBM Plex Mono', monospace;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--text-dim);
+      color: rgba(var(--fg-rgb),.5);
       margin-top: 6px;
     }
 
@@ -192,12 +225,12 @@
       font: 500 12px/1 'IBM Plex Mono', monospace;
       letter-spacing: .2em;
       text-transform: uppercase;
-      color: var(--text-faint);
+      color: rgba(var(--fg-rgb),.4);
       margin-bottom: 30px;
     }
     .about-lead {
       font: 400 32px/1.4 'Cormorant Garamond', serif;
-      color: var(--text);
+      color: var(--fg);
       margin: 0 0 30px;
       max-width: 877px;
       text-wrap: pretty;
@@ -210,7 +243,7 @@
     .about-grid p {
       font-size: 15.5px;
       line-height: 1.72;
-      color: rgba(236,231,220,.72);
+      color: rgba(var(--fg-rgb),.72);
     }
 
     /* ── Value ── */
@@ -225,19 +258,19 @@
       font: 500 12px/1 'IBM Plex Mono', monospace;
       letter-spacing: .2em;
       text-transform: uppercase;
-      color: var(--text-faint);
+      color: rgba(var(--fg-rgb),.4);
     }
     .value-lead {
       text-align: center;
       font: 400 30px/1.32 'Cormorant Garamond', serif;
       margin: 0 auto 46px;
       max-width: 30ch;
-      color: var(--text);
+      color: var(--fg);
     }
     .factors { display: flex; flex-direction: column; gap: 22px; }
     .factor {
-      background: var(--bg-card);
-      border: 1px solid rgba(236,231,220,.13);
+      background: var(--surface);
+      border: 1px solid rgba(var(--fg-rgb),.13);
       border-radius: 5px;
       padding: 34px 38px;
     }
@@ -249,7 +282,7 @@
     }
     .factor-num {
       font: 400 46px/.85 'Cormorant Garamond', serif;
-      color: rgba(156,180,111,.5);
+      color: rgba(var(--accent-rgb),.5);
       flex: none;
     }
     .factor h3 {
@@ -259,8 +292,8 @@
     .factor-tag {
       display: inline-block;
       background: rgba(58,86,45,.5);
-      border: 1px solid rgba(156,180,111,.35);
-      color: #cdd9b3;
+      border: 1px solid rgba(var(--accent-rgb),.35);
+      color: var(--accent);
       font: 500 11px/1 'IBM Plex Mono', monospace;
       letter-spacing: .05em;
       padding: 6px 12px;
@@ -269,12 +302,12 @@
     .factor-why {
       font-size: 15.5px;
       line-height: 1.68;
-      color: rgba(236,231,220,.74);
+      color: rgba(var(--fg-rgb),.74);
       margin: 0 0 22px;
     }
     .factor-impact {
-      background: var(--bg-deep);
-      border-left: 2px solid var(--green);
+      background: var(--bg2);
+      border-left: 2px solid var(--accent);
       border-radius: 0 3px 3px 0;
       padding: 18px 22px;
     }
@@ -282,13 +315,13 @@
       font: 500 11px/1 'IBM Plex Mono', monospace;
       letter-spacing: .16em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--accent);
       margin-bottom: 9px;
     }
     .impact-text {
       font-size: 14.5px;
       line-height: 1.62;
-      color: rgba(236,231,220,.82);
+      color: rgba(var(--fg-rgb),.82);
     }
 
     /* ── Experience ── */
@@ -301,7 +334,7 @@
       font: 500 12px/1 'IBM Plex Mono', monospace;
       letter-spacing: .2em;
       text-transform: uppercase;
-      color: var(--text-faint);
+      color: rgba(var(--fg-rgb),.4);
       text-align: center;
       margin-bottom: 48px;
     }
@@ -311,16 +344,16 @@
       gap: 34px;
       padding-bottom: 34px;
       margin-bottom: 34px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(var(--fg-rgb),.12);
     }
     .job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .job-dates {
       font: 400 18px/1.2 'Cormorant Garamond', serif;
-      color: var(--green);
+      color: var(--accent);
     }
     .job-company {
       font-size: 13px;
-      color: var(--text-dim);
+      color: rgba(var(--fg-rgb),.5);
       margin-top: 4px;
     }
     .job h3 {
@@ -330,14 +363,14 @@
     .job-summary {
       font-size: 15px;
       line-height: 1.65;
-      color: rgba(236,231,220,.68);
+      color: rgba(var(--fg-rgb),.68);
       margin: 0 0 18px;
       max-width: 60ch;
     }
     .read-more-btn {
       background: transparent;
-      border: 1px solid rgba(156,180,111,.5);
-      color: var(--green);
+      border: 1px solid rgba(var(--accent-rgb),.5);
+      color: var(--accent);
       font: 500 12px/1 'IBM Plex Mono', monospace;
       letter-spacing: .08em;
       text-transform: uppercase;
@@ -346,7 +379,7 @@
       cursor: pointer;
       transition: background .2s;
     }
-    .read-more-btn:hover { background: rgba(156,180,111,.12); }
+    .read-more-btn:hover { background: rgba(var(--accent-rgb),.12); }
 
     /* ── Skills ── */
     .skills-section {
@@ -359,7 +392,7 @@
       font: 500 12px/1 'IBM Plex Mono', monospace;
       letter-spacing: .2em;
       text-transform: uppercase;
-      color: var(--text-faint);
+      color: rgba(var(--fg-rgb),.4);
       margin-bottom: 26px;
     }
     .skills-table {
@@ -373,14 +406,14 @@
       gap: 16px;
       align-items: start;
       padding: 18px 0;
-      border-top: 1px solid rgba(236,231,220,.1);
+      border-top: 1px solid rgba(var(--fg-rgb),.1);
     }
-    .skill-row:last-child { border-bottom: 1px solid rgba(236,231,220,.1); }
+    .skill-row:last-child { border-bottom: 1px solid rgba(var(--fg-rgb),.1); }
     .skill-category {
       font: 500 11px/1 'IBM Plex Mono', monospace;
       letter-spacing: .13em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--accent);
       padding-top: 4px;
     }
     .skill-pills {
@@ -389,11 +422,11 @@
       gap: 8px;
     }
     .skill-pill {
-      border: 1px solid rgba(236,231,220,.2);
+      border: 1px solid rgba(var(--fg-rgb),.2);
       border-radius: 999px;
       padding: 6px 14px;
       font-size: 13px;
-      color: rgba(236,231,220,.85);
+      color: rgba(var(--fg-rgb),.85);
     }
 
     /* ── More / Writing & Building ── */
@@ -407,7 +440,7 @@
       font: 500 12px/1 'IBM Plex Mono', monospace;
       letter-spacing: .2em;
       text-transform: uppercase;
-      color: var(--text-faint);
+      color: rgba(var(--fg-rgb),.4);
       margin-bottom: 14px;
     }
     .more-lead {
@@ -415,7 +448,7 @@
       font: 400 30px/1.32 'Cormorant Garamond', serif;
       margin: 0 auto 46px;
       max-width: 38ch;
-      color: var(--text);
+      color: var(--fg);
     }
     .link-cards {
       display: grid;
@@ -423,37 +456,38 @@
       gap: 22px;
     }
     .link-card {
-      display: block;
-      background: var(--bg-card);
-      border: 1px solid rgba(236,231,220,.13);
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid rgba(var(--fg-rgb),.13);
       border-radius: 5px;
       padding: 34px 38px;
       position: relative;
       transition: border-color .2s, background .2s;
-      color: var(--text);
+      color: var(--fg);
     }
     .link-card:hover {
-      border-color: rgba(156,180,111,.5);
-      background: var(--bg-card-hover);
+      border-color: rgba(var(--accent-rgb),.5);
+      background: var(--surface-hover);
     }
     .link-card-eyebrow {
       font: 500 11px/1 'IBM Plex Mono', monospace;
       letter-spacing: .16em;
       text-transform: uppercase;
-      color: var(--green);
+      color: var(--accent);
       margin-bottom: 14px;
     }
     .link-card-badge {
       position: absolute;
       top: 24px;
       right: 24px;
-      background: rgba(58,86,45,.5);
-      border: 1px solid rgba(156,180,111,.35);
-      color: #cdd9b3;
-      font: 500 11px/1 'IBM Plex Mono', monospace;
-      letter-spacing: .04em;
-      padding: 5px 10px;
+      font: 500 10px/1 'IBM Plex Mono', monospace;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(var(--fg-rgb),.55);
+      border: 1px solid rgba(var(--fg-rgb),.2);
       border-radius: 999px;
+      padding: 4px 10px;
     }
     .link-card-title {
       font: 500 22px/1.2 'Cormorant Garamond', serif;
@@ -461,22 +495,22 @@
     }
     .link-card-desc {
       font-size: 14.5px;
-      line-height: 1.65;
-      color: var(--text-muted);
-      margin-bottom: 20px;
+      line-height: 1.62;
+      color: rgba(var(--fg-rgb),.7);
+      margin-bottom: 26px;
+      flex: 1;
     }
     .link-card-cta {
-      font: 500 12px/1 'IBM Plex Mono', monospace;
-      letter-spacing: .08em;
-      color: var(--green);
+      font: 500 13px/1 'IBM Plex Sans', sans-serif;
+      color: var(--accent);
     }
 
     /* ── Footer ── */
     .footer {
       text-align: center;
       padding: 60px 56px;
-      border-top: 1px solid var(--border);
-      background: var(--bg-deep);
+      border-top: 1px solid rgba(var(--fg-rgb),.12);
+      background: var(--bg2);
     }
     .footer-title {
       font: 400 36px/1.2 'Cormorant Garamond', serif;
@@ -488,16 +522,16 @@
       justify-content: center;
       flex-wrap: wrap;
       font-size: 14px;
-      color: rgba(236,231,220,.65);
+      color: rgba(var(--fg-rgb),.65);
     }
     .footer-links a { color: inherit; transition: color .2s; }
-    .footer-links a:hover { color: var(--text); }
+    .footer-links a:hover { color: var(--fg); }
 
     /* ── Modal ── */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(8,9,5,.72);
+      background: var(--overlay);
       backdrop-filter: blur(3px);
       display: flex;
       align-items: flex-start;
@@ -509,8 +543,8 @@
     }
     .modal-overlay.hidden { display: none; }
     .modal {
-      background: var(--bg-card);
-      border: 1px solid rgba(236,231,220,.14);
+      background: var(--surface);
+      border: 1px solid rgba(var(--fg-rgb),.14);
       border-radius: 4px;
       max-width: 720px;
       width: 100%;
@@ -524,12 +558,12 @@
       align-items: flex-start;
       gap: 20px;
       padding: 34px 40px 24px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(var(--fg-rgb),.12);
     }
     .modal-meta {
       font: 500 12px/1 'IBM Plex Mono', monospace;
       letter-spacing: .14em;
-      color: var(--green);
+      color: var(--accent);
       margin-bottom: 10px;
     }
     .modal-title {
@@ -538,8 +572,8 @@
     .modal-close {
       flex: none;
       background: transparent;
-      border: 1px solid rgba(236,231,220,.25);
-      color: var(--text);
+      border: 1px solid rgba(var(--fg-rgb),.25);
+      color: var(--fg);
       width: 38px;
       height: 38px;
       border-radius: 50%;
@@ -548,20 +582,20 @@
       line-height: 1;
       transition: background .2s;
     }
-    .modal-close:hover { background: rgba(236,231,220,.1); }
+    .modal-close:hover { background: rgba(var(--fg-rgb),.1); }
     .modal-body { padding: 30px 40px 38px; }
     .bullet {
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 16px;
       padding: 14px 0;
-      border-bottom: 1px solid rgba(236,231,220,.08);
+      border-bottom: 1px solid rgba(var(--fg-rgb),.08);
     }
     .bullet-dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--green-dark);
+      background: var(--green);
       margin-top: 8px;
       box-shadow: 0 0 0 4px rgba(58,86,45,.25);
       flex: none;
@@ -569,13 +603,13 @@
     .bullet-head {
       font-weight: 600;
       font-size: 14.5px;
-      color: var(--text);
+      color: var(--fg);
       margin-bottom: 4px;
     }
     .bullet-text {
       font-size: 14px;
       line-height: 1.6;
-      color: rgba(236,231,220,.66);
+      color: rgba(var(--fg-rgb),.66);
     }
 
     /* ── Responsive ── */
@@ -614,6 +648,7 @@
         <a href="#skills" data-en="Skills" data-de="Kompetenzen">Skills</a>
         <a href="#more" data-en="More" data-de="Mehr">More</a>
         <a href="#contact" data-en="Contact" data-de="Kontakt">Contact</a>
+        <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Switch to light mode">☀</button>
         <button class="lang-btn" onclick="toggleLang()">
           <span class="dim lang-current">EN</span><span>/</span><span class="lang-other" style="font-weight:600">DE</span>
         </button>
@@ -637,9 +672,9 @@
       I build partnerships that scale portfolios.
     </h1>
     <p class="hero-sub"
-       data-en="More than six years building strategic partnerships across healthcare and engineering — owning €100M+ in key accounts, negotiating at decision-maker level across 15+ countries, and orchestrating the cross-functional teams that deliver."
-       data-de="Über sechs Jahre Aufbau strategischer Partnerschaften im Gesundheitswesen und Engineering – mit über €100M Account-Verantwortung, Verhandlungen auf Entscheiderebene in 15+ Ländern und der Orchestrierung cross-funktionaler Teams.">
-      More than six years building strategic partnerships across healthcare and engineering — owning €100M+ in key accounts, negotiating at decision-maker level across 15+ countries, and orchestrating the cross-functional teams that deliver.
+       data-en="More than six years building strategic partnerships across healthcare — owning €100M+ in key accounts, negotiating at decision-maker level across 15+ countries, and orchestrating the cross-functional teams that deliver."
+       data-de="Über sechs Jahre Aufbau strategischer Partnerschaften im Gesundheitswesen – mit über €100M Account-Verantwortung, Verhandlungen auf Entscheiderebene in 15+ Ländern und der Orchestrierung cross-funktionaler Teams.">
+      More than six years building strategic partnerships across healthcare — owning €100M+ in key accounts, negotiating at decision-maker level across 15+ countries, and orchestrating the cross-functional teams that deliver.
     </p>
     <div class="hero-ctas">
       <a href="mailto:johannalandwehr@outlook.com" class="btn-primary" data-en="Email me" data-de="Schreiben Sie mir">Email me</a>
@@ -655,7 +690,7 @@
       <div class="stat-label" data-en="Key accounts led" data-de="Key Accounts geführt">Key accounts led</div>
     </div>
     <div class="stat">
-      <div class="stat-num">8</div>
+      <div class="stat-num">7+</div>
       <div class="stat-label" data-en="Years experience" data-de="Jahre Erfahrung">Years experience</div>
     </div>
     <div class="stat">
@@ -837,10 +872,8 @@
 
   <!-- skills -->
   <section id="skills" class="skills-section">
-    <div class="skills-heading" id="skills-heading" data-en="Skills &amp; Languages" data-de="Kompetenzen &amp; Sprachen">Skills &amp; Languages</div>
-    <div class="skills-table" id="skills-table">
-      <!-- populated by JS for lang switching -->
-    </div>
+    <div class="skills-heading" data-en="Skills &amp; Languages" data-de="Kompetenzen &amp; Sprachen">Skills &amp; Languages</div>
+    <div class="skills-table" id="skills-table"></div>
   </section>
 
   <!-- more / writing & building -->
@@ -1009,26 +1042,37 @@
     };
 
     let lang = 'en';
+    let theme = 'dark';
     let currentJobIndex = null;
+
+    function toggleTheme() {
+      theme = theme === 'dark' ? 'light' : 'dark';
+      applyTheme();
+      try { localStorage.setItem('jl-theme', theme); } catch(e) {}
+    }
+
+    function applyTheme() {
+      document.documentElement.setAttribute('data-theme', theme);
+      const btn = document.getElementById('theme-btn');
+      btn.textContent = theme === 'dark' ? '☀' : '☾';
+      btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+    }
 
     function toggleLang() {
       lang = lang === 'en' ? 'de' : 'en';
       document.documentElement.lang = lang;
       applyLang();
-      try { localStorage.setItem('lang', lang); } catch(e) {}
+      try { localStorage.setItem('jl-lang', lang); } catch(e) {}
     }
 
     function applyLang() {
       document.querySelector('.lang-current').textContent = lang.toUpperCase();
       document.querySelector('.lang-other').textContent = lang === 'en' ? 'DE' : 'EN';
-
       document.querySelectorAll('[data-en]').forEach(el => {
         const val = el.getAttribute('data-' + lang);
         if (val) el.innerHTML = val;
       });
-
       renderSkills();
-
       if (currentJobIndex !== null) renderModal(currentJobIndex);
     }
 
@@ -1073,11 +1117,14 @@
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    // Init — restore saved language preference
+    // Restore saved preferences
     try {
-      const saved = localStorage.getItem('lang');
-      if (saved === 'de') { lang = 'de'; applyLang(); }
+      const savedTheme = localStorage.getItem('jl-theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') { theme = savedTheme; applyTheme(); }
+      const savedLang = localStorage.getItem('jl-lang');
+      if (savedLang === 'de') { lang = 'de'; applyLang(); }
     } catch(e) {}
+
     renderSkills();
   </script>
 </body>
