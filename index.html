@@ -679,7 +679,7 @@
     <div class="hero-ctas">
       <a href="mailto:johannalandwehr@outlook.com" class="btn-primary" data-en="Email me" data-de="Schreiben Sie mir">Email me</a>
       <a href="https://www.linkedin.com/in/johanna-landwehr" class="btn-outline" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="CV_JL.pdf" class="btn-outline" target="_blank" data-en="Download CV ↓" data-de="Lebenslauf ↓">Download CV ↓</a>
+      <a id="cv-btn" href="CV_Johanna Landwehr.pdf" class="btn-outline" target="_blank" data-en="Download CV ↓" data-de="Lebenslauf ↓">Download CV ↓</a>
     </div>
   </div>
 
@@ -1072,6 +1072,9 @@
         const val = el.getAttribute('data-' + lang);
         if (val) el.innerHTML = val;
       });
+      document.getElementById('cv-btn').href = lang === 'de'
+        ? 'Lebenslauf_Johanna Landwehr.pdf'
+        : 'CV_Johanna Landwehr.pdf';
       renderSkills();
       if (currentJobIndex !== null) renderModal(currentJobIndex);
     }
